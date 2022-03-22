@@ -6,8 +6,9 @@ from urllib import request
 DIDs = {
     "AlgoveraAI/coco" : "did:op:8c0DcCdfb9CA94c0Ac24b133690532f3D37f8A3E",
     "AlgoveraAI/cryptopunks" : "did:op:C9D0568838fa670baEe7195Ea443b32EfCAc2281",
+    "AlgoveraAI/cryptopunks-download" : "did:op:d21196A9AC0A0Aa9df1ef6f30a440584Fe1C5E7b",
     "AlgoveraAI/imagenette" : "did:op:9e9B9528742bccF77b101Dc75f94e2b34b4afc37",
-    "LYNX/eeg" : "did:op:BBb60C3f7C9D8937E91B5b8183d91b7CA7E610D7"
+    "LYNX/eeg" : "did:op:BBb60C3f7C9D8937E91B5b8183d91b7CA7E610D7",
     "nCight/arthroscopic" : "did:op:9E9F96E1301da237B496aC397c1f46984336C4d0"
 }
     
@@ -51,8 +52,13 @@ class Dataset:
         request.urlretrieve(sample_link, filename)
         return filename
 
+    def get_service_type(self):
+        return self.dataset.as_dictionary()['service'][1]['type']
+
     def download(self):
-        pass
+        if get_service_type == 'compute':
+            print("Can't download dataset with compute access")
+            return False+
 
 def list_files(data_dir):
     print("Listing files...")

@@ -57,8 +57,8 @@ class Dataset:
 
     def download(self):
         if get_service_type == 'compute':
-            print("Can't download dataset with compute access")
-            return False+
+            print("Can't download dataset with compute-only access. Try to run an algorithm using C2D.")
+            return False
 
 def list_files(data_dir):
     print("Listing files...")
@@ -68,7 +68,6 @@ def list_files(data_dir):
         print((len(path) - 1) * '---', os.path.basename(root))
         for file in files:
             fn = os.path.join(root,file)
-            # if fn.split('.')[-1] in ['feather']:
             data_path.append(fn)
             print(len(path) * '---', file)
 

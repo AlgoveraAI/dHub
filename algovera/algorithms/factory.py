@@ -4,16 +4,17 @@ import os
 from urllib.parse import urlsplit
 
 from .huggingface import load_model_config_from_hf
-from .ocean import load_model_from_ocean
+from .ocean import load_algorithm_from_ocean
+from ..utils import parse_name
 
-def create_model(model_name):
+def create_algorithm(algorithm_name):
 
-    model_source, model_name = parse_model_name(model_name)
+    algorithm_source, algorithm_name = parse_name(algorithm_name)
 
-    if model_source == 'ocean':
-        model = load_model_from_ocean(model_name)
+    if algorithm_source == 'ocean':
+        algorithm = load_algorithm_from_ocean(algorithm_name)
     
-    elif model_source == 'hf-hub':
-        pretrained_cfg, model_name = load_model_config_from_hf(model_name)
+    elif algorithm_source == 'hf-hub':
+        pretrained_cfg, algorithm_name = load_model_config_from_hf(algorithm_name)
 
-    return model
+    return algorithm

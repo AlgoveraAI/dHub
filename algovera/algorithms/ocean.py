@@ -29,5 +29,7 @@ class OceanAlgorithm:
     def __init__(self, algorithm):
         self.algorithm = algorithm
 
-def load_model_from_ocean(model_id: str):
-    pass
+def load_algorithm_from_ocean(algorithm_name):
+    did = DIDs[algorithm_name]
+    algorithm = ocean.assets.resolve(did)
+    return algorithm

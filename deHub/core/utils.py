@@ -29,5 +29,5 @@ def convert_gdrive_link(link):
 def parse_name(name):
     name = name.replace('hf_hub', 'hf-hub')  # NOTE for backwards compat, to deprecate hf_hub use
     parsed = urlsplit(name)
-    assert parsed.scheme in ('', 'ocean', 'hf-hub')
+    assert parsed.scheme in ('', 'ocean', 'hf-hub', 'hub')
     return parsed.scheme, parsed.path

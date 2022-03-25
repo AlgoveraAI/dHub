@@ -1,5 +1,6 @@
 # Code from pytorch image model library (timm)
 
+import hub
 import os
 from urllib.parse import urlsplit
 
@@ -14,5 +15,7 @@ def create_dataset(dataset_full):
         dataset = load_dataset_from_ocean(dataset_name)
     elif dataset_source == 'hf-hub':
         pass
-        
+    elif dataset_source == 'hub':
+        dataset = hub.load(dataset_full)
+
     return dataset

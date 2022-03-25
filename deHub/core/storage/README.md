@@ -1,0 +1,3 @@
+# Algovera deHub Storage
+
+Decentralised storage solutions have the potential to vastly reduce the costs incurred by data scientists for storing raw and processed versions of datasets, as well as model weights. Currently, there are few tools for interacting with decentralised storage in the language (Python) that they are used to. This is especially true for writing to storage. This package aims to make it easier for data scientists to use decentralised storage and access public datasets and model weights through a unified Python interface. 

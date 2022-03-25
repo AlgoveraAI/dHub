@@ -4,7 +4,7 @@ from pathlib import Path
 import shutil
 from urllib import request
 
-from algovera.utils import check_gdrive_link, convert_gdrive_link
+from deHub.core.utils import check_gdrive_link, convert_gdrive_link
 
 DIDs = {
     "AlgoveraAI/coco" : "did:op:8c0DcCdfb9CA94c0Ac24b133690532f3D37f8A3E",

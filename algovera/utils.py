@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from urllib.parse import urlsplit
 
 def list_files(data_dir):
     print("Listing files...")
@@ -24,3 +25,14 @@ def convert_gdrive_link(link):
     file_id = path.parts[-2]
     new_link = "https://drive.google.com/uc?export=download&id=" + file_id
     return new_link
+
+def parse_name(name):
+    name = name.replace('hf_hub', 'hf-hub')  # NOTE for backwards compat, to deprecate hf_hub use
+    parsed = urlsplit(name)
+    assert parsed.scheme in ('', 'ocean', 'hf-hub')
+    if parsed.scheme == 'hf-hub':
+        # FIXME may use fragment as revision, currently `@` in URI path
+        return parsed.scheme, parsed.path
+    else:
+        name = os.path.split(parsed.path)[-1]
+        return 'ocean', name

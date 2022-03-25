@@ -36,6 +36,9 @@ source venv/bin/activate
 pip install wheel
 pip install ocean-lib
 
+pip install huggingface_hub
+
+pip install torch
 pip install notebook
 ```
 

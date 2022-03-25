@@ -1,6 +1,6 @@
 # Algovera deHub
 
-Python libray for performing data science with Web3 tools such as Ocean data marketplace and decentralized storage.
+The goal of deHub is to develop the Web3 machine learning stack by integrating Ocean Protocol, IPFS, Filecoin and HuggingFace. 
 
 # Contents
 
@@ -23,8 +23,8 @@ Algovera is a community of individuals working to facilitate and accelerate the 
 Open a new terminal and:
 ```console
 #clone repo
-git clone https://github.com/AlgoveraAI/Algovera.git
-cd Algovera
+git clone https://github.com/AlgoveraAI/deHub.git
+cd deHub
 
 #create a virtual environment
 python3 -m venv venv

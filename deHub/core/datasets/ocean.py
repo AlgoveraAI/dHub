@@ -6,7 +6,7 @@ from urllib import request
 
 from deHub.core.utils import check_gdrive_link, convert_gdrive_link
 
-DIDs = {
+catalogue = {
     "AlgoveraAI/coco" : "did:op:8c0DcCdfb9CA94c0Ac24b133690532f3D37f8A3E",
     "AlgoveraAI/cryptopunks" : "did:op:C9D0568838fa670baEe7195Ea443b32EfCAc2281",
     "AlgoveraAI/cryptopunks-download" : "did:op:d21196A9AC0A0Aa9df1ef6f30a440584Fe1C5E7b",
@@ -18,26 +18,15 @@ DIDs = {
 config = Config('config.ini')
 ocean = Ocean(config)
 
-class OceanDatasets:
-    def __init__(self):
-        pass
-
-    def load_dataset(self, dataset_name):
-        dataset = ocean.assets.resolve(DIDs[dataset_name])
-
-        print(f"Data token info = '{dataset.values['dataTokenInfo']}'")
-        print(f"Dataset name = '{dataset.metadata['main']['name']}'")
-
-        return OceanDataset(dataset)
-
-    def ls(self):
-        for DID in DIDs:
-            print(DID)
+def get_datasets():
+    return list(catalogue.keys())
 
     
 class OceanDataset:
     def __init__(self, dataset):
         self.dataset = dataset
+        print(f"Data token info = '{dataset.values['dataTokenInfo']}'")
+        print(f"Dataset name = '{dataset.metadata['main']['name']}'")
 
     def get_sample_link(self):
         sample_link = self.dataset.metadata['additionalInformation']['links'][0]['url']
@@ -67,6 +56,6 @@ class OceanDataset:
             return False
 
 def load_dataset_from_ocean(dataset_name):
-    did = DIDs[dataset_name]
+    did = catalogue[dataset_name]
     dataset = ocean.assets.resolve(did)
     return dataset

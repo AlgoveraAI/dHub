@@ -1,4 +1,6 @@
-# Algovera Library
+# Algovera deHub
+
+Python libray for performing data science with Web3 tools such as Ocean data marketplace and decentralized storage.
 
 # Contents
 

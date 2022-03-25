@@ -1,3 +1,5 @@
+from ocean_lib.config import Config
+from ocean_lib.ocean.ocean import Ocean
 from pathlib import Path
 import shutil
 from urllib import request
@@ -13,12 +15,15 @@ DIDs = {
     "nCight/arthroscopic" : "did:op:9E9F96E1301da237B496aC397c1f46984336C4d0"
 }
     
-class OceanDatasets:
-    def __init__(self, cfg):
-        self.cfg = cfg
+config = Config('config.ini')
+ocean = Ocean(config)
 
-    def load_dataset(self, did):
-        dataset = self.cfg.ocean.assets.resolve(DIDs[did])
+class OceanDatasets:
+    def __init__(self):
+        pass
+
+    def load_dataset(self, dataset_name):
+        dataset = ocean.assets.resolve(DIDs[dataset_name])
 
         print(f"Data token info = '{dataset.values['dataTokenInfo']}'")
         print(f"Dataset name = '{dataset.metadata['main']['name']}'")
@@ -61,3 +66,7 @@ class OceanDataset:
             print("Can't download dataset with compute-only access. Try to run an algorithm using C2D.")
             return False
 
+def load_dataset_from_ocean(dataset_name):
+    did = DIDs[dataset_name]
+    dataset = ocean.assets.resolve(did)
+    return dataset

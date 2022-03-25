@@ -32,12 +32,10 @@ python3 -m venv venv
 #activate env
 source venv/bin/activate
 
-#Install the ocean.py library. Install wheel first to avoid errors.
 pip install wheel
 pip install ocean-lib
-
 pip install huggingface_hub
-
+pip install hub
 pip install torch
 pip install notebook
 ```

@@ -1,7 +1,8 @@
-import os
 from pathlib import Path
 import shutil
 from urllib import request
+
+from algovera.utils import check_gdrive_link, convert_gdrive_link
 
 DIDs = {
     "AlgoveraAI/coco" : "did:op:8c0DcCdfb9CA94c0Ac24b133690532f3D37f8A3E",
@@ -12,7 +13,7 @@ DIDs = {
     "nCight/arthroscopic" : "did:op:9E9F96E1301da237B496aC397c1f46984336C4d0"
 }
     
-class Datasets:
+class OceanDatasets:
     def __init__(self, cfg):
         self.cfg = cfg
 
@@ -22,14 +23,14 @@ class Datasets:
         print(f"Data token info = '{dataset.values['dataTokenInfo']}'")
         print(f"Dataset name = '{dataset.metadata['main']['name']}'")
 
-        return Dataset(dataset)
+        return OceanDataset(dataset)
 
     def ls(self):
         for DID in DIDs:
             print(DID)
 
     
-class Dataset:
+class OceanDataset:
     def __init__(self, dataset):
         self.dataset = dataset
 
@@ -60,26 +61,3 @@ class Dataset:
             print("Can't download dataset with compute-only access. Try to run an algorithm using C2D.")
             return False
 
-def list_files(data_dir):
-    print("Listing files...")
-    data_path = []
-    for root, dirs, files in os.walk(data_dir):
-        path = root.split(os.sep)
-        print((len(path) - 1) * '---', os.path.basename(root))
-        for file in files:
-            fn = os.path.join(root,file)
-            data_path.append(fn)
-            print(len(path) * '---', file)
-
-def check_gdrive_link(link):
-    path = Path(link)
-    if path.parts[-1] == 'view?usp=sharing':
-        return False
-    else:
-        return True
-
-def convert_gdrive_link(link):
-    path = Path(link)
-    file_id = path.parts[-2]
-    new_link = "https://drive.google.com/uc?export=download&id=" + file_id
-    return new_link

@@ -4,7 +4,7 @@ DIDs = {
     "AlgoveraAI/dcgan" : "did:op:E2e123115d5758Dd4C6F434E1c142e72ed8B2820",
 }
 
-class Algorithms:
+class OceanAlgorithms:
     def __init__(self, cfg):
         self.cfg = cfg
 
@@ -14,13 +14,13 @@ class Algorithms:
         print(f"Alg token info = '{algorithm.values['dataTokenInfo']}'")
         print(f"Alg name = '{algorithm.metadata['main']['name']}'")
 
-        return Algorithm(algorithm)
+        return OceanAlgorithm(algorithm)
 
     def ls(self):
         for DID in DIDs:
             print(DID)
 
     
-class Algorithm:
+class OceanAlgorithm:
     def __init__(self, algorithm):
         self.algorithm = algorithm

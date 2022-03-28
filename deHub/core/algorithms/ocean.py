@@ -1,19 +1,22 @@
 from ocean_lib.config import Config
 from ocean_lib.ocean.ocean import Ocean
 
-DIDs = {
+catalogue = {
     "AlgoveraAI/dcgan" : "did:op:E2e123115d5758Dd4C6F434E1c142e72ed8B2820",
 }
 
 config = Config('config.ini')
 ocean = Ocean(config)
 
+def get_algorithms():
+    return list(catalogue.keys())
+
 class OceanAlgorithms:
     def __init__(self):
         pass
 
     def load_algorithm(self, did):
-        algorithm = ocean.assets.resolve(DIDs[did])
+        algorithm = ocean.assets.resolve(catalogue[did])
 
         print(f"Alg token info = '{algorithm.values['dataTokenInfo']}'")
         print(f"Alg name = '{algorithm.metadata['main']['name']}'")
@@ -30,6 +33,6 @@ class OceanAlgorithm:
         self.algorithm = algorithm
 
 def load_algorithm_from_ocean(algorithm_name):
-    did = DIDs[algorithm_name]
+    did = catalogue[algorithm_name]
     algorithm = ocean.assets.resolve(did)
     return algorithm

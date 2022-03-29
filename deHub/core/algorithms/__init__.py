@@ -1,1 +1,1 @@
-from .factory import create_algorithm
+from .factory import load_algorithm

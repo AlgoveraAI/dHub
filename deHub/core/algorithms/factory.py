@@ -7,7 +7,7 @@ from .huggingface import load_model_config_from_hf
 from .ocean import get_algorithms, load_algorithm_from_ocean
 from ..utils import parse_name
 
-def create_algorithm(algorithm_name):
+def load_algorithm(algorithm_name):
 
     algorithm_source, algorithm_name = parse_name(algorithm_name)
 

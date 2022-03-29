@@ -8,7 +8,7 @@ from .ocean import get_datasets, load_dataset_from_ocean
 from ..utils import parse_name
 
 
-def create_dataset(dataset_full):
+def load_dataset(dataset_full):
     dataset_source, dataset_name = parse_name(dataset_full)
 
     if dataset_source == 'ocean':

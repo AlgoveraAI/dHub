@@ -26,8 +26,28 @@ def convert_gdrive_link(link):
     new_link = "https://drive.google.com/uc?export=download&id=" + file_id
     return new_link
 
+def convert_github_link(link):
+    path = Path(link)
+    parts = path.parts
+    if parts[0] == 'https:':
+        parts = parts[1:]
+    path = "https://raw.githubusercontent.com" + f"/{parts[1]}" + f"/{parts[2]}"
+    for part in parts[4:]:
+        path = path + f"/{part}"
+    return path
+
 def parse_name(name):
     name = name.replace('hf_hub', 'hf-hub')  # NOTE for backwards compat, to deprecate hf_hub use
     parsed = urlsplit(name)
     assert parsed.scheme in ('', 'ocean', 'hf-hub', 'hub')
     return parsed.scheme, parsed.path
+
+def load_checkpoint(filepath):
+    checkpoint = torch.load(filepath)
+    model = checkpoint['model']
+    model.load_state_dict(checkpoint['state_dict'])
+    for parameter in model.parameters():
+        parameter.requires_grad = False
+
+    model.eval()
+    return model

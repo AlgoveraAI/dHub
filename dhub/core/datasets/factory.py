@@ -4,7 +4,7 @@ import hub
 import os
 from urllib.parse import urlsplit
 
-from .ocean import get_datasets, load_dataset_from_ocean
+from .ocean import get_datasets, load_dataset_from_ocean, create_dataset_ocean
 from ..utils import parse_name
 
 
@@ -13,6 +13,18 @@ def load_dataset(dataset_full):
 
     if dataset_source == 'ocean':
         dataset = load_dataset_from_ocean(dataset_name)
+    elif dataset_source == 'hf-hub':
+        pass
+    elif dataset_source == 'hub':
+        dataset = hub.load(dataset_full)
+
+    return dataset
+
+def create_dataset(dataset_full):
+    dataset_source, dataset_name = parse_name(dataset_full)
+
+    if dataset_source == 'ocean':
+        dataset = create_dataset_ocean(dataset_name)
     elif dataset_source == 'hf-hub':
         pass
     elif dataset_source == 'hub':

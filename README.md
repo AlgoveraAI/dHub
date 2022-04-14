@@ -1,6 +1,6 @@
-# Algovera deHub
+# Algovera dHub
 
-The goal of deHub is to develop the Web3 machine learning stack by integrating Ocean Protocol, IPFS, Filecoin and HuggingFace. 
+There are several existing Web2 hubs for datasets, models, apps and other assets, such as [Google AI Hub](https://aihub.cloud.google.com/u/0/), [HuggingFace Hub](https://huggingface.co/AlgoveraAI) and [ActiveLoop Hub](https://www.activeloop.ai/). There also exist Web3 marketplaces - such as the Ocean [Marketplace](https://market.oceanprotocol.com/) - that facilitates ownership and monetisation of private datasets and algorithms. However, all of these solutions currently rely on centralised storage and compute providers. The aim of dHub is to create a decentralized hub for machine learning assets where data scientists can store, share and explore using cheaper decentralized storage solutions, as well keeping ownership of (and optionally, monetizing) their creations.
 
 # Contents
 
@@ -23,8 +23,8 @@ Algovera is a community of individuals working to facilitate and accelerate the 
 Open a new terminal and:
 ```console
 #clone repo
-git clone https://github.com/AlgoveraAI/deHub.git
-cd deHub
+git clone https://github.com/AlgoveraAI/dHub.git
+cd dHub
 
 #create a virtual environment
 python3 -m venv venv
@@ -38,6 +38,7 @@ pip install huggingface_hub
 pip install hub
 pip install torch
 pip install notebook
+pip install python-dotenv
 ```
 
 # 🏛 License

@@ -32,13 +32,7 @@ python3 -m venv venv
 #activate env
 source venv/bin/activate
 
-pip install wheel
-pip install ocean-lib
-pip install huggingface_hub
-pip install hub
-pip install torch
-pip install notebook
-pip install python-dotenv
+pip install -e .
 ```
 
 # 🏛 License

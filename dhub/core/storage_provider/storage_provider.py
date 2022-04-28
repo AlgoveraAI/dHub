@@ -20,6 +20,7 @@ class StorageProvider:
             data={"file": object_to_upload},
             headers={"Authorization": "Bearer " + os.environ["WEB3_STORAGE_TOKEN"]},
         )
+        return response
 
     def get_url(config: Config) -> str:
         """

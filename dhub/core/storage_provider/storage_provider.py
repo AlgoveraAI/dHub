@@ -22,6 +22,13 @@ class StorageProvider:
         )
         return response
 
+    def download(cid) -> Response:
+        url = f"https://{cid}.ipfs.dweb.link/"
+        response = StorageProvider.requests_session.get(
+            url, timeout=10
+        )
+        return response        
+
     def get_url(config: Config) -> str:
         """
         Return the DataProvider component url.
